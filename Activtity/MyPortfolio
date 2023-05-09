@@ -48,7 +48,7 @@ public class MyPortfolio extends JFrame {
                 panel.repaint();
             }
         });
-        JButton forwardButton = new JButton(new ImageIcon("next.jpg"));
+        JButton forwardButton = new JButton(new ImageIcon("next.png"));
         forwardButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 currentImageIndex++;
