@@ -1,0 +1,76 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+public class MyPortfolio extends JFrame {
+
+    private static final long serialVersionUID = 1L;
+
+    private JLabel imageLabel;
+    private JButton backButton;
+    private JButton nextButton;
+
+    private int currentIndex;
+    private Image[] images = {
+            new ImageIcon("1.png").getImage(),
+            new ImageIcon("2.png").getImage(),
+            new ImageIcon("3.png").getImage(),
+            new ImageIcon("4.png").getImage(),
+            new ImageIcon("5.png").getImage(),
+            new ImageIcon("6.png").getImage(),
+            new ImageIcon("7.png").getImage(),
+            new ImageIcon("8.png").getImage(),
+            new ImageIcon("9.png").getImage(),
+    };
+
+    public MyPortfolio() {
+        super("MyPortfolio");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        imageLabel = new JLabel();
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        imageLabel.setVerticalAlignment(SwingConstants.CENTER);
+
+        backButton = new JButton("Back");
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                imageLabel.setIcon(new ImageIcon(images[currentIndex]));
+            }
+        });
+
+        nextButton = new JButton("Next");
+        nextButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                currentIndex = (currentIndex + 1) % images.length;
+                imageLabel.setIcon(new ImageIcon(images[currentIndex]));
+            }
+        });
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(backButton);
+        buttonPanel.add(Box.createHorizontalStrut(10));
+        buttonPanel.add(nextButton);
+        buttonPanel.add(Box.createHorizontalGlue());
+
+        JPanel contentPane = new JPanel();
+        contentPane.setLayout(new BorderLayout());
+        contentPane.add(imageLabel, BorderLayout.CENTER);
+        contentPane.add(buttonPanel, BorderLayout.SOUTH);
+
+        setContentPane(contentPane);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        currentIndex = 0;
+        imageLabel.setIcon(new ImageIcon(images[currentIndex]));
+    }
+
+    public static void main(String[] args) {
+        new MyPortfolio();
+    }
+}
