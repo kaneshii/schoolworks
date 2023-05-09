@@ -73,3 +73,4 @@ public class MyPortfolio extends JFrame {
         new MyPortfolio();
     }
 }
+// This project creates a JFrame with a JPanel that displays the current image and two JButtons for navigating back and forth between images. The images are loaded into an ArrayList of ImageIcons, and the panel's paintComponent method is overridden to draw the current image and scale it proportionally to fit the panel's size. You can replace the image files and button images with your own custom ones. The image carousel is adaptive and will resize the images to fit the panel's size as it is resized.
